@@ -1,1 +1,5 @@
+vendor.lge.hardware.accessory::IAccessory                             u:object_r:hal_lge_accessory_hwservice:s0
+vendor.lge.hardware.accessory.uevent::IAccessoryUevent                u:object_r:hal_lge_accessory_hwservice:s0
 vendor.lge.hardware.biometrics.fingerprint::ILgeBiometricsFingerprint u:object_r:hal_fingerprint_hwservice:s0
+vendor.lge.hardware.dualscreen::IDualScreen                           u:object_r:hal_lge_dualscreen_hwservice:s0
+vendor.lge.hardware.lpwg::ILpwg                                       u:object_r:hal_lge_lpwg_hwservice:s0

@@ -1,0 +1,11 @@
+type hal_accessory_default, domain;
+hal_server_domain(hal_accessory_default, hal_accessory)
+
+type hal_accessory_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_accessory_default)
+
+add_hwservice(hal_accessory_server, hal_lge_accessory_hwservice)
+allow hal_accessory_client hal_lge_accessory_hwservice:hwservice_manager find;
+
+allow hal_accessory_default sysfs_extcon:dir search;
+r_dir_file(hal_accessory_default, sysfs_extcon)

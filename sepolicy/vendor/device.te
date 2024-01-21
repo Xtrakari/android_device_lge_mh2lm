@@ -1,0 +1,2 @@
+type acm_device, dev_type;
+type hidraw_device, dev_type;

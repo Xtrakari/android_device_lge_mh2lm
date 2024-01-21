@@ -1,0 +1,23 @@
+type hal_dualscreen_default, domain;
+hal_server_domain(hal_dualscreen_default, hal_dualscreen)
+
+type hal_dualscreen_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_dualscreen_default)
+
+add_hwservice(hal_dualscreen_server, hal_lge_dualscreen_hwservice)
+allow hal_dualscreen_client hal_lge_dualscreen_hwservice:hwservice_manager find;
+
+allow hal_dualscreen_default device:dir r_dir_perms;
+allow hal_dualscreen_default acm_device:chr_file rw_file_perms;
+allow hal_dualscreen_default hidraw_device:chr_file rw_file_perms;
+allow hal_dualscreen_default sysfs_lge_accessory:dir r_dir_perms;
+allow hal_dualscreen_default sysfs_lge_accessory:file rw_file_perms;
+allow hal_dualscreen_default sysfs_lge_touch:dir search;
+allow hal_dualscreen_default sysfs_lge_touch:file rw_file_perms;
+allow hal_dualscreen_default sysfs_wake_lock:file r_file_perms;
+allow hal_dualscreen_default usb_device:dir r_dir_perms;
+allow hal_dualscreen_default usb_device:chr_file rw_file_perms;
+allow hal_dualscreen_default vendor_sysfs_usb_device:dir r_dir_perms;
+allow hal_dualscreen_default vendor_sysfs_usb_device:file rw_file_perms;
+
+get_prop(hal_dualscreen_default, vendor_qni_prop)

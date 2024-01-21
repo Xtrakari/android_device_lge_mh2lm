@@ -1,6 +1,13 @@
 /dev/esfp0                         u:object_r:fingerprint_device:s0
+/dev/ttyACM[0-9]+                  u:object_r:acm_device:s0
+/dev/hidraw[0-9]+                  u:object_r:hidraw_device:s0
 
 /mnt/vendor/persist-lg/egis(/.*)?  u:object_r:persist_lg_fingerprint_file:s0
 
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.mh2lm      u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lge\.hardware\.biometrics\.fingerprint@2\.2-service         u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lge\.hardware\.accessory@1\.1-service                       u:object_r:hal_accessory_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lge\.hardware\.dualscreen@1\.1-service                      u:object_r:hal_dualscreen_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lge\.hardware\.lpwg\@1\.4-service                           u:object_r:hal_lpwg_default_exec:s0
+
+/sys/devices/platform/vendor/vendor:lge_usb_ds2/wakeup/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0

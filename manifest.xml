@@ -1,0 +1,42 @@
+<manifest version="2.0" type="device" target-level="4">
+    <hal format="hidl">
+        <name>vendor.lge.hardware.accessory</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>IAccessory</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.1::IAccessory/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lge.hardware.accessory.uevent</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>IAccessoryUevent</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.2::IAccessoryUevent/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lge.hardware.dualscreen</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>IDualScreen</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.1::IDualScreen/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lge.hardware.lpwg</name>
+        <transport>hwbinder</transport>
+        <version>1.4</version>
+        <interface>
+            <name>ILpwg</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.4::ILpwg/default</fqname>
+    </hal>
+</manifest>
