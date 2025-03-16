@@ -13,7 +13,7 @@ DEVICE_PATH := device/lge/mh2lm
 TARGET_SCREEN_DENSITY := 401
 
 # Fingerprint
-$(call soong_config_set,LGE_FINGERPRINT_HAL,TARGET_HAS_EGISTEC_UDFPS,true)
+$(call soong_config_set,EGISTEC_RBS_FINGERPRINT,needs_ini_relocation,true)
 
 # HIDL
 ODM_MANIFEST_FILES += $(DEVICE_PATH)/manifest_odm.xml

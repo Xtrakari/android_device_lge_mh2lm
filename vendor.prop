@@ -5,6 +5,9 @@ persist.vendor.lge.3rd.speaker.prot.enable=false
 ro.vendor.lge.aux.camera=1
 ro.vendor.lge.physical.camera=4
 
+# Fingerprint
+ro.vendor.fingerprint.udfps=true
+
 # LGE Misc
 ro.vendor.lge.build.target_country=COM
 ro.vendor.lge.build.target_operator=LAO
