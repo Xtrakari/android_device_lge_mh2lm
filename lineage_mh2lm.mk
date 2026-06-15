@@ -27,14 +27,17 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="mh2lm-user 12 SKQ1.211103.001 223331636afae release-keys" \
     BuildFingerprint=lge/mh2lm/mh2lm:12/SKQ1.211103.001/223331636afae:user/release-keys
 
-# Maintainer name (use "_" for spaces, e.g., "rmp_22" → "rmp 22" in UI)
+# Maintainer Stuff
 AXION_MAINTAINER := Xtrakari
 
-# Processor name (use "_" for spaces)
-AXION_PROCESSOR := Snapdragon_855
+# Axion Stuff
+AXION_CAMERA_REAR_INFO := 12,13
+AXION_CAMERA_FRONT_INFO := 32
+AXION_PROCESSOR := snapdragon_855
+TARGET_SUPPORTED_REFRESH_RATES := 60
+TARGET_INCLUDES_LOS_PREBUILTS := true
+TARGET_INCLUDE_AXFX := false
+PRODUCT_NO_CAMERA := false
 
-# Define rear camera specs (multiple sensors supported)
-AXION_CAMERA_REAR_INFO := 12,13  # Example: 50MP + 48MP
-
-# Define front camera specs
-AXION_CAMERA_FRONT_INFO := 32  # Example: 42MP
+# Enable activity open override fix for low-end devices or devices affected by activity open/exit freezing issue
+PERF_ANIM_OVERRIDE := true
