@@ -202,4 +202,8 @@
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
 
+    <bool name="config_camera_flash_supported">true</bool>
+
+    <bool name="config_turnOnFlashlightWithCamera">true</bool>
+
 </resources>
