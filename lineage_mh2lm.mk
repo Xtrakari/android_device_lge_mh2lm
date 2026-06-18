@@ -12,10 +12,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/lge/mh2lm/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/matrixx/config/common_full_phone.mk)
+
+#Matrixx Stuff
+WITH_GMS := false
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_ENABLE_BLUR := true
+HBM_SUPPORTED := true
+TARGET_BOOT_ANIMATION_RES := 1080
+MATRIXX_MAINTAINER := Xtrakari
+TARGET_SUPPORTED_REFRESH_RATES := 60
+TARGET_CUSTOM_UDFPS := true
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_mh2lm
+PRODUCT_NAME := matrixx_mh2lm
 PRODUCT_DEVICE := mh2lm
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
