@@ -12,20 +12,49 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/lge/mh2lm/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/matrixx/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-#Matrixx Stuff
-WITH_GMS := false
-TARGET_SUPPORTS_QUICK_TAP := true
-TARGET_ENABLE_BLUR := true
-HBM_SUPPORTED := true
-TARGET_BOOT_ANIMATION_RES := 1080
+# Call the BCR setup
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
+#For official Devices:
+MATRIXX_BUILD_TYPE := Unofficial
 MATRIXX_MAINTAINER := Xtrakari
-TARGET_SUPPORTED_REFRESH_RATES := 60
-TARGET_CUSTOM_UDFPS := true
+MATRIXX_CHIPSET := SM8150
+MATRIXX_BATTERY := 4000mAh
+MATRIXX_DISPLAY := 1080x2340
+
+#EPPE
+TARGET_DISABLE_EPPE := true
+
+#BOOT_ANIMATION
+TARGET_BOOT_ANIMATION_RES := 1080
+
+#AUDIOFX
+TARGET_EXCLUDES_AUDIOFX := true
+
+#Build with Gapps:
+WITH_GMS := false
+
+#Device has UDFPS:
+TARGET_HAS_UDFPS := true
+
+#Blur effect
+TARGET_ENABLE_BLUR := true
+
+#Add Google Contacts, Dialer & Messaging 
+BUILD_GOOGLE_CONTACTS := true
+BUILD_GOOGLE_DIALER := true
+BUILD_GOOGLE_MESSAGE := true
+
+#Device has UDFPS:
+TARGET_HAS_UDFPS := true
+
+#Blur effect
+TARGET_ENABLE_BLUR := true
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := matrixx_mh2lm
+PRODUCT_NAME := lineage_mh2lm
 PRODUCT_DEVICE := mh2lm
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
