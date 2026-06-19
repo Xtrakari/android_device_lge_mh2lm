@@ -1,8 +1,11 @@
 #
-# Copyright (C) 2023 The LineageOS Project
+# Copyright (C) 2026 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+
+DEVICE_PATH := device/lge/mh2lm
+DEVICE_NAME := mh2lm
 
 # Inherit from common tree
 $(call inherit-product, device/lge/sm8150-common/sm8150.mk)
@@ -11,15 +14,6 @@ $(call inherit-product, device/lge/sm8150-common/sm8150.mk)
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
-
-# Bootanimation
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 2248
-
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -40,9 +34,9 @@ PRODUCT_PACKAGES += \
     QuadDACPanel \
     vendor.lge.hardware.audio.dac.control@2.0-service
 
-# Fingerprint
+# Fingerprint (Note: Requires AIDL translation shim / wrapper in tree)
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.lge
+    android.hardware.biometrics.fingerprint-service.lge
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -70,9 +64,56 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+# Runtime Resource Overlays (RROs)
+PRODUCT_PACKAGES += \
+    FrameworksResOverlayMh2lm \
+    SettingsOverlayMh2lm \
+    SystemUIOverlayMh2lm \
+    LineageOverlayMh2lm
 
-# Get non-open-source specific aspects
+# Soong namespace
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH) \
+    hardware/qcom-caf/bootctrl
+
+# Inherit from vendor makefiles
 $(call inherit-product-if-exists, vendor/lge/mh2lm/mh2lm-vendor.mk)
+
+# A/B OTA Updater configuration
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true
+
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=ext4 \
+    POSTINSTALL_OPTIONAL_vendor=true
+
+# Core Updater Components
+PRODUCT_PACKAGES += \
+    checkpoint_gc \
+    update_engine \
+    update_engine_sideload \
+    update_verifier
+
+# Boot HAL and ServiceManager implementations
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery \
+    servicemanager.recovery
+
+# Copy recovery VINTF manifest to ramdisk
+PRODUCT_COPY_FILES += \
+    device/lge/mh2lm/recovery_manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest.xml
+
+# Override default system properties for early ADB debugging
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.adb.secure=0 \
+    persist.sys.usb.config=adb
+
+# Force modern eBPF pipeline recognition down to legacy kernel frameworks
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.bpf.kver_override=5.10.239
