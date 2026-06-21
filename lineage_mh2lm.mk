@@ -17,9 +17,28 @@ PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := G8X ThinQ
 
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_DISABLE_EPPE := true
+TARGET_ENABLE_BLUR := true
+
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=mh2lm \
     BuildDesc="mh2lm-user 12 SKQ1.211103.001 223331636afae release-keys" \
     BuildFingerprint=lge/mh2lm/mh2lm:12/SKQ1.211103.001/223331636afae:user/release-keys
+
+# Maintainer Stuff
+AXION_MAINTAINER := Xtrakari
+
+# Axion Stuff
+AXION_CAMERA_REAR_INFO := 12,13
+AXION_CAMERA_FRONT_INFO := 32
+AXION_PROCESSOR := Snapdragon_855
+TARGET_SUPPORTED_REFRESH_RATES := 60
+TARGET_INCLUDES_LOS_PREBUILTS := true
+TARGET_INCLUDE_AXFX := false
+PRODUCT_NO_CAMERA := false
+
+# Enable activity open override fix for low-end devices or devices affected by activity open/exit freezing issue
+PERF_ANIM_OVERRIDE := true
