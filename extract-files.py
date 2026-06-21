@@ -30,6 +30,9 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/liblgsnpeawb.so')
     : blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+    # Add the flashlight camera fix right here:
+    'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so': blob_fixup()
+        .sig_replace('80 00 80 52 21 00 80 52 e7 09 00 94', '1f 20 03 d5 1f 20 03 d5 1f 20 03 d5'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
