@@ -23,3 +23,12 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=mh2lm \
     BuildDesc="mh2lm-user 12 SKQ1.211103.001 223331636afae release-keys" \
     BuildFingerprint=lge/mh2lm/mh2lm:12/SKQ1.211103.001/223331636afae:user/release-keys
+
+#Evo Flags
+EVO_BUILD_TYPE := Unofficial
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_INCLUDE_ACCORD := false
+BUILD_BCR := true
+BYPASS_CHARGE_SUPPORTED := false
+WITH_GMS := false
+TARGET_DISABLE_EPPE := true
