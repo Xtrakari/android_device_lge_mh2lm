@@ -17,9 +17,25 @@ PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := G8X ThinQ
 
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_DISABLE_EPPE := true
+TARGET_ENABLE_BLUR := true
+PRODUCT_NO_CAMERA := true
+WITH_GMS := false
+
+#Options
+
+TARGET_USES_MINI_GAPPS := false
+TARGET_USES_PICO_GAPPS := false
+
+TARGET_HAS_UDFPS := true
+EXTRA_UDFPS_ANIMATIONS := true
+
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=mh2lm \
     BuildDesc="mh2lm-user 12 SKQ1.211103.001 223331636afae release-keys" \
     BuildFingerprint=lge/mh2lm/mh2lm:12/SKQ1.211103.001/223331636afae:user/release-keys
+
+MISTOS_MAINTAINER="Xtrakari"
