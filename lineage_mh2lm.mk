@@ -34,6 +34,8 @@ RISING_BATTERY := "4000 mAh"
 #RISING_PACKAGE_TYPE := "VANILLA_AOSP"
 
 # disable/enable blur support, default is false
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_DISABLE_EPPE := true
 TARGET_ENABLE_BLUR := true
 
 # whether to ship aperture camera, default is false
@@ -48,7 +50,7 @@ TARGET_HAS_UDFPS := true
 #GMS Flags
 WITH_GMS := false
 # ships core GMS components that are needed to run GMS environment
-#TARGET_CORE_GMS := true
+#TARGET_CORE_GMS := false
 #Extra add-ons for GMS build, check RisingOS manifest for the list
 #TARGET_CORE_GMS_EXTRAS := false
 # Wether to ship pixel launcher and set it as default launcher
